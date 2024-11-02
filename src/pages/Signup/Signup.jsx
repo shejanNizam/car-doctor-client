@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
-import img from "/images/login/login.svg";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import img from "/images/login/login.svg";
 
 export default function Signup() {
   const { createUser } = useContext(AuthContext);
 
-  const handleSignUp = (event) => {
-    event.preventDefault();
-    const form = event.target;
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;

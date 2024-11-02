@@ -6,9 +6,9 @@ import img from "/images/login/login.svg";
 export default function Login() {
   const { signIn } = useContext(AuthContext);
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, email, password);
