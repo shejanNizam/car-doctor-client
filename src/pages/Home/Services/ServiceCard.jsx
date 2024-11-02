@@ -12,6 +12,7 @@ export default function ServiceCard({ service }) {
           <h2 className="card-title">{title}</h2>
           <p className="text-xl text-orange-500">Price: ${price}</p>
           <div className="card-actions">
+            {/* dynamic route here */}
             <Link to={`/checkout/`}>
               <button className="btn btn-primary">Book Now</button>
             </Link>
