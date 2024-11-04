@@ -22,10 +22,16 @@ export default function Navbar() {
         <Link to="/about">About</Link>{" "}
       </li>
       {user?.email ? (
-        <li>
-          {" "}
-          <button onClick={handleLogOut}> Log out </button>{" "}
-        </li>
+        <>
+          <li>
+            {" "}
+            <Link to="/bookings">Bookings</Link>{" "}
+          </li>
+          <li>
+            {" "}
+            <button onClick={handleLogOut}> Log out </button>{" "}
+          </li>
+        </>
       ) : (
         <li>
           {" "}
