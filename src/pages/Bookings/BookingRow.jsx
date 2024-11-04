@@ -1,4 +1,4 @@
-const BookingRow = ({ booking }) => {
+const BookingRow = ({ booking, handleDelete }) => {
   const { _id, date, service, price, img, status } = booking;
   console.log(booking);
 
@@ -6,7 +6,7 @@ const BookingRow = ({ booking }) => {
     <tr>
       <th>
         <button
-          //   onClick={() => handleDelete(_id)}
+          onClick={() => handleDelete(_id)}
           className="btn btn-sm btn-circle"
         >
           <svg
