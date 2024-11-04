@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function ServiceCard({ service }) {
-  const { title, img, price } = service;
+  const { _id, title, img, price } = service;
   return (
     <>
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -13,7 +13,7 @@ export default function ServiceCard({ service }) {
           <p className="text-xl text-orange-500">Price: ${price}</p>
           <div className="card-actions">
             {/* dynamic route here */}
-            <Link to={`/checkout/`}>
+            <Link to={`/checkout/${_id}`}>
               <button className="btn btn-primary">Book Now</button>
             </Link>
           </div>
