@@ -54,6 +54,7 @@ export default function Checkout() {
               </label>
               <input
                 type="text"
+                required
                 defaultValue={user?.displayName}
                 name="name"
                 className="input input-bordered"
@@ -63,7 +64,12 @@ export default function Checkout() {
               <label className="label">
                 <span className="label-text">Date</span>
               </label>
-              <input type="date" name="date" className="input input-bordered" />
+              <input
+                type="date"
+                required
+                name="date"
+                className="input input-bordered"
+              />
             </div>
             <div className="form-control">
               <label className="label">
@@ -71,6 +77,7 @@ export default function Checkout() {
               </label>
               <input
                 type="text"
+                readOnly
                 name="email"
                 defaultValue={user?.email}
                 placeholder="email"
@@ -83,6 +90,7 @@ export default function Checkout() {
               </label>
               <input
                 type="text"
+                readOnly
                 defaultValue={"$" + price}
                 className="input input-bordered"
               />
