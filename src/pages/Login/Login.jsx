@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import img from "/images/login/login.svg";
 
 export default function Login() {
   const { signIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ export default function Login() {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
+        navigate(location?.state ? location?.state : "/");
         console.log(user);
       })
       .catch((error) => console.log(error));
