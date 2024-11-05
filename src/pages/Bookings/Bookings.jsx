@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import BookingRow from "./BookingRow";
@@ -7,9 +8,11 @@ export default function Bookings() {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:7000/bookings?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setBookings(data));
+    axios
+      .get(`http://localhost:7000/bookings?email=${user?.email}`, {
+        withCredentials: true,
+      })
+      .then((res) => setBookings(res.data));
   }, []);
 
   const handleDelete = (id) => {
@@ -20,7 +23,6 @@ export default function Bookings() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.deletedCount > 0) {
             alert("deleted successful");
             const remaining = bookings.filter((booking) => booking._id !== id);
@@ -55,7 +57,10 @@ export default function Bookings() {
   return (
     <>
       <div>
-        <h2 className="text-5xl">Your bookings: {bookings.length}</h2>
+        <h2 className="text-5xl text-center py-4">
+          Your total bookings:{" "}
+          <span className="text-orange-600 font-bold"> {bookings.length} </span>
+        </h2>
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             {/* head */}
@@ -69,6 +74,7 @@ export default function Bookings() {
                 <th>Image</th>
                 <th>Service</th>
                 <th>Date</th>
+                <th>Mail</th>
                 <th>Price</th>
                 <th>Status</th>
               </tr>

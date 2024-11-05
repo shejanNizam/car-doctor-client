@@ -1,5 +1,5 @@
 const BookingRow = ({ booking, handleDelete, handleBookingConfirm }) => {
-  const { _id, date, service, price, img, status } = booking;
+  const { _id, email, date, service, price, img, status } = booking;
 
   return (
     <tr>
@@ -33,6 +33,7 @@ const BookingRow = ({ booking, handleDelete, handleBookingConfirm }) => {
       </td>
       <td>{service}</td>
       <td>{date}</td>
+      <td>{email}</td>
       <td>${price}</td>
       <th>
         {status === "confirm" ? (

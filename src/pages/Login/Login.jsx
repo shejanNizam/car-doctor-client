@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -13,12 +14,23 @@ export default function Login() {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
     signIn(email, password)
       .then((result) => {
-        const user = result.user;
-        navigate(location?.state ? location?.state : "/");
-        console.log(user);
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        const user = { email };
+
+        //  get access token
+        axios
+          .post("http://localhost:7000/jwt", user, {
+            withCredentials: true,
+          })
+          .then((data) => {
+            console.log(data.data);
+            if (data.data.success) {
+              navigate(location?.state ? location?.state : "/");
+            }
+          });
       })
       .catch((error) => console.log(error));
   };
